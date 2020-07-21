@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,29 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        $categories = Category::all();
+        $products = Product::allProduct();
+
+        return view('frontend.pages.index', compact('products', 'users', 'categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -46,8 +32,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $products = Product::findOrfail($product);
+
+        return view('frontend.pages.show', compact('products'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

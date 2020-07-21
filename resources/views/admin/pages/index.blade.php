@@ -111,12 +111,12 @@
               <thead>
                   <tr>
                       <th style="width: 1%"> Id</th>
-                      <th style="width: 12%">Product Name</th>
+                      <th style="width: 15% ">Product Name</th>
                       <th style="width: 18%" >Product Images</th>
-                      <th style="width: 15%" >Product Categories</th>
+                      <th style="width: 18%" >Product Categories</th>
                       <th style="width: 18%">Product Description</th>
                       <th style="width: 8%" class="text-center">Price</th>
-                      <th style="width: 20%" class="text-center">Action</th>
+                      <th style="width: 15%" class="text-center">Action</th>
                   </tr>
               </thead>
               <tbody>
@@ -124,15 +124,15 @@
                   @foreach($products as $product)
                   <tr>
                       <td> {{ $product->id }}.</td>
-                      <td><a>{{ucfirst($product->name)}}</a> <br/>
+                      <td style="font-weight: 600;"><a>{{ucfirst($product->name)}}</a> <br/>
                           <small> {{ $product->created_at }}</small>
                       </td>
                       <td>
                           <ul class="inline-item">
                             @foreach(explode(',' ,$product->image) as $image)
                             @if ($loop->first)
-                              <li class="list-inline-item">
-                                  <img alt="Avatar" class="table" src="{{ asset('images/'.$image) }}" style="width: 60px; height:60px;" lazy="loading">
+                              <li class="list-inline-item ">
+                                  <img alt="Avatar" class="table m-3" src="{{ asset('images/'.$image) }}" style="width: 60px; height:60px;" lazy="loading">
                               </li>
                               @endif
                            @endforeach
@@ -146,11 +146,11 @@
                       <td class="project_progress">
 
                           <small>
-                            {{ \Illuminate\Support\Str::limit($product->description ?? '',30,' ...') }}
+                            {{ \Illuminate\Support\Str::limit($product->description ?? '',50,' ...') }}
                           </small>
                       </td>
                       <td class="project-state">
-                          <span class="badge badge-success">{{ $product->formatPrice() }} $</span>
+                          <h4 class="badge badge-dark">{{ $product->formatPrice() }} $</h4>
                       </td>
                       <td class="project-actions text-right">
                         <a href="{{ url('/admin/product/'.$product->slug) }}">

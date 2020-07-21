@@ -10,7 +10,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">Poduct Name:</label>
-                <input type="text" class="form-control" id="" name="name" value="{{ old('name') }}" required data-parsley-length="[10,100]">
+                <input type="text" class="form-control" id="" name="name" value="{{ old('name') }}" required data-parsley-length="[10,25]">
               </div>
               <div class="form-group">
                 <label for="">Poduct Description:</label>

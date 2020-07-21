@@ -51,7 +51,7 @@ class LoginController extends Controller
         if (auth()->attempt(array('email' => $request->email, 'password' => $request->password))) {
 
             if (Auth::check() && auth()->user()->is_admin == 1) {
-                return redirect('admin/dashboard')->with('success', ' Welcome back '. strtoupper(Auth::user()->name));
+                return redirect()->intended('admin/dashboard')->with('success', ' Welcome back '. strtoupper(Auth::user()->name));
 
             } else {
                 return redirect('/')->with('success', strtoupper(Auth::user()->name).' you are logged in!');

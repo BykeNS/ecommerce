@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Image;
-use App\User;
-use App\Product;
 use App\Category;
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Image;
 use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class AdminController extends Controller
@@ -25,7 +24,7 @@ class AdminController extends Controller
         $users = User::all();
         $categories = Category::all();
         $products = Product::allProduct();
-        
+
         return view('admin.pages.index', compact('products', 'users', 'categories'));
 
     }
@@ -52,8 +51,8 @@ class AdminController extends Controller
             'description' => 'required|min:10 |max:5000',
             'price' => 'required',
             'slug' => '',
-            'image' => 'required', // 2 MB,
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:3548',
+            'image' => 'required|max:4024', // 4 MB,
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4024',
 
         ]);
 
@@ -96,10 +95,10 @@ class AdminController extends Controller
             'price' => 'required',
             'slug' => '',
             'image' => 'nullable',
-            //'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3548', // 3 MB,
+            'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3548', // 3 MB,
 
         ]);
-        $products = Product::findOrfail($product);
+        //$products = Product::findOrfail($product);
 
         $product->name = $request->name;
         $product->description = $request->description;
@@ -127,8 +126,6 @@ class AdminController extends Controller
             $product->image = implode(',', $names);
         }
 
-
-
         $product->category()->sync($request->category);
         $product->update();
 
@@ -141,10 +138,10 @@ class AdminController extends Controller
         return redirect()->back()->with('success', ' Product ' . $product->name . ' has been deleted!!!');
     }
 
-    public function uploadImages(Request $request, Product $product)
+    public function user()
     {
-        //dd($request->all());
-        return view('admin.pages.uploadImages');
+        $users = User::all();
+        return view('admin.users.user',compact('users'));
     }
 
 }

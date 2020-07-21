@@ -4,16 +4,18 @@
 @section('content')
 
 
+@foreach($products as $product)
+
 		<div class="banner_inner">
 			<div class="services-breadcrumb">
 				<div class="inner_breadcrumb">
 
 					<ul class="short">
 						<li>
-							<a href="index.html">Home</a>
+							<a href="/">Home</a>
 							<i>|</i>
 						</li>
-						<li>Single Page</li>
+						<li class="text-center">{{ $product->name }}</li>
 					</ul>
 				</div>
 			</div>
@@ -23,6 +25,7 @@
 	</div>
 
 		<section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+
 			<div class="container">
 				<div class="inner-sec-shop pt-lg-4 pt-3">
 					<div class="row">
@@ -31,23 +34,28 @@
 										<div class="flexslider1">
 
 											<ul class="slides">
-												<li data-thumb="{{ asset('frontend/images/d2.jpg') }}">
-													<div class="thumb-image"> <img src="{{ asset('frontend/images/d2.jpg') }}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                                @foreach(explode(',' ,$product->image) as $image)
+                                                @if ($loop->first)
+												<li data-thumb="{{ asset('images/'.$image) }}">
+													<div class="thumb-image"> <img src="{{ asset('images/'.$image) }}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                                </li>
+                                               @endif
+
+                                                @if ($loop->index)
+												<li data-thumb="{{ asset('images/'.$image) }}">
+													<div class="thumb-image"> <img src="{{ asset('images/'.$image) }}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
 												</li>
-												<li data-thumb="{{ asset('frontend/images/d1.jpg') }}">
-													<div class="thumb-image"> <img src="{{ asset('frontend/images/d1.jpg') }}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
-												</li>
-												<li data-thumb="{{ asset('frontend/images/d3.jpg') }}">
-													<div class="thumb-image"> <img src="{{ asset('frontend/images/d3.jpg') }}" data-imagezoom="true" class="img-fluid" alt=" "> </div>
-												</li>
-											</ul>
-											<div class="clearfix"></div>
+                                                @endif
+                                                @endforeach
+                                            </ul>
+                                            <div class="clearfix"></div>
 										</div>
 									</div>
-								</div>
+                                </div>
+
 								<div class="col-lg-8 single-right-left simpleCart_shelfItem">
-									<h3>Irayz Butterfly Sunglasses  (Black)</h3>
-									<p><span class="item_price">$650</span>
+									<h3>{{ $product->name }}</h3>
+									<p><span class="item_price">${{ $product->formatPrice() }}</span>
 										<del>$1,199</del>
 									</p>
 									<div class="rating1">
@@ -60,7 +68,7 @@
 										</ul>
 									</div>
 									<div class="description">
-										<h5>Check delivery, payment options and charges at your location</h5>
+										<h5>{{ $product->description }}</h5>
 										<form action="#" method="post">
 												<input class="form-control" type="text" name="Email" placeholder="Please enter..." required="">
 											<input type="submit" value="Check">
@@ -215,7 +223,8 @@
 
 					</div>
 				</div>
-			</div>
+            </div>
+            @endforeach
 				<div class="container-fluid">
 
 					<div class="slider-img mid-sec mt-lg-5 mt-2 px-lg-5 px-3">

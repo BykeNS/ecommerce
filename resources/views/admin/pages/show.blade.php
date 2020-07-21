@@ -35,11 +35,11 @@
 
                 @if ($loop->first)
                 <div class="col-12">
-                    <img src="{{ asset('images/'.$image) }}" class="d-inline pb-3 mt-2 img-responsive" alt="Product Image" style="width: 480px; height: 400px; ">
+                    <img src="{{ asset('images/'.$image) }}" class="d-inline pb-3 mt-2 img-responsive" alt="Product Image" style="width: 85%; height: 60%; ">
                 </div>
                 @endif
                 @if ($loop->index)
-                <img src="{{ asset('images/'.$image) }}" class="d-inline pt-1 m-3 img-thumbnail" style="width: 100px; height: 100px;" alt="Product Image">
+                <img src="{{ asset('images/'.$image) }}" class="d-inline pt-1 m-3 img-thumbnail  " style="width: 20%; " >
                 @endif
 
           @endforeach

@@ -24,7 +24,7 @@
     $(document).ready(function () {
         setTimeout(function() {
         $("#myModal").modal('show');
-         }, 20000);
+         }, 50000);
     });
 </script>
 {{--  <!-- // modal -->  --}}

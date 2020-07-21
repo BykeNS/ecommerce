@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Routing\RouteAction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
@@ -13,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::view('/', 'frontend.pages.index');
+Route::get('/', 'ProductController@index');
 Route::view('/about', 'frontend.pages.about');
 Route::view('/contact', 'frontend.pages.contact');
-Route::view('/single', 'frontend.pages.single');
+Route::get('/product/{product}', 'ProductController@show');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('/admin')->namespace('Admin')->group(function () {
@@ -27,14 +29,16 @@ Route::prefix('/admin')->namespace('Admin')->group(function () {
         Route::get('/product/create', 'AdminController@create');
         Route::get('/product/{product}', 'AdminController@show');
         Route::post('/product/store', 'AdminController@store')->name('product.store');
-        Route::get('/product/uploadImages/{product}', 'AdminController@uploadImages');
         Route::post('/product/update/{product}', 'AdminController@update');
         Route::get('/product/edit/{product}', 'AdminController@edit');
-        Route::get('/product/delete/{product}','AdminController@destroy');
-      // Category
+        Route::get('/product/delete/{product}', 'AdminController@destroy');
+        // Category
         Route::get('/category/', 'CategoryController@index');
         Route::get('/category/create', 'CategoryController@create');
         Route::post('/category/store', 'CategoryController@store');
+        //Users
+        Route::get('/users', 'AdminController@user');
+
 
     });
 
