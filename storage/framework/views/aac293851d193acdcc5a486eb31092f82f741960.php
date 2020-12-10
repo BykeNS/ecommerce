@@ -17,11 +17,11 @@
             <?php echo $__env->make('frontend.include.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <?php echo $__env->make('frontend.include.modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-            //<?php echo $__env->make('sweetalert::alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+           
             <?php echo $__env->make('frontend.include.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         </div>
     </body>
-
 </html>
+
 <?php /**PATH C:\laragon\www\ecom\resources\views/frontend/master.blade.php ENDPATH**/ ?>

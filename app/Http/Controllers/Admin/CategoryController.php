@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -47,11 +48,13 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'status' => 'required',
+            'slug' => ''
         ]);
 
         $category = new Category;
         $category->name = $request->name;
         $category->status = $request->status;
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         return redirect('/admin/category')->with('success', 'New category created');

@@ -37,49 +37,61 @@
 
                     @endauth
                      @guest
-                     <a   class="btn btn-default"  href="{{ route('login') }}">
+                     <a   class="btn btn-default m-2 "  href="{{ route('login') }}">
                         <i class="fa fa-user fa-fw " aria-hidden="true"></i>Login
                     </a>
-
                      @endguest
 
                     </li>
 
+
                     <li class="galssescart galssescart2 cart cart box_1">
-                        <form action="#" method="post" class="last">
-                            <input type="hidden" name="cmd" value="_cart">
-                            <input type="hidden" name="display" value="1">
-                            <button class="top_googles_cart" type="submit" name="submit" value="">
+
+                            <a href="{{ route('cart') }}"><button class="top_googles_cart" >
                                 My Cart
-                                <i class="fas fa-cart-arrow-down"></i>
-                            </button>
-                        </form>
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="badge badge-primary" id='lblCartCount'>{{ Cart::count() === 0 ? '' : Cart::count()}}</span>
+
+                            </button></a>
+
                     </li>
                 </ul>
 
             </div>
         </div>
-        <div class="search">
+
+        <div class="search ">
             <div class="mobile-nav-button">
                 <button id="trigger-overlay" type="button">
                     <i class="fas fa-search"></i>
                 </button>
+
             </div>
             <!-- open/close -->
             <div class="overlay overlay-door">
                 <button type="button" class="overlay-close">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </button>
-                <form action="#" method="post" class="d-flex">
-                    <input class="form-control" type="search" placeholder="Search here..." required="">
-                    <button type="submit" class="btn btn-primary submit">
+                <form action="{{ route('search') }}" method="get" class="d-flex">
+                    <input class="form-control" name="q" type="search" placeholder="Search here..." >
+                     <button type="submit" class="btn btn-primary submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
 
             </div>
+           
             <!-- open/close -->
         </div>
+        <select class="form-control selectpicker col-2 " onchange ="document.location.href = '/product/category/' + this.value" >
+              <option value="" selected disabled hidden>Find by category</option>
+              @foreach($categories as $category)
+              <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
+              
+           
+          </select>
+        
         <label class="top-log mx-auto"></label>
         <nav class="navbar navbar-expand-lg navbar-light bg-light top-header mb-2">
 
@@ -88,7 +100,10 @@
                 <span class="navbar-toggler-icon">
 
                 </span>
+                
             </button>
+           
+              
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-mega mx-auto">
                     <li class="nav-item active">

@@ -37,8 +37,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 <script>
     $("#image").on("change", function() {
-        if ($("#image")[0].files.length >= 5) {
-            alert("You can select only 4 images");
+        if ($("#image")[0].files.length >= 4) {
+            alert("You can select only 3 images");
         } else {
             $("#imageUploadForm").submit();
         }

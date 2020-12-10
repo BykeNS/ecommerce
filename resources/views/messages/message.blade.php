@@ -15,12 +15,12 @@
     swal({
 
         text:"{{Session::get('success')}}",
-        timer:5000,
+        timer:6900,
         type:'success'
     })
     window.setTimeout(function(){
         location.reload();
-    } ,2100);
+    } ,2700);
 
 </script>
 @endif

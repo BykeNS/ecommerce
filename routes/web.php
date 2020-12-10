@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Auth\Notifications\VerifyEmail;
-use Illuminate\Routing\RouteAction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +15,16 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', 'ProductController@index');
-Route::view('/about', 'frontend.pages.about');
-Route::view('/contact', 'frontend.pages.contact');
+Route::get('/about', 'ProductController@about');
+Route::get('/contact', 'ProductController@contact');
 Route::get('/product/{product}', 'ProductController@show');
+Route::get('/product/category/{product}','ProductController@catFind');
+Route::get('/search', 'ProductController@search')->name('search');
 
 Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('/mail', 'email.customer');
 
 Route::prefix('/admin')->namespace('Admin')->group(function () {
     Route::group(['middleware' => ['is_admin']], function () {
@@ -39,7 +42,33 @@ Route::prefix('/admin')->namespace('Admin')->group(function () {
         //Users
         Route::get('/users', 'AdminController@user');
 
-
     });
 
 });
+
+Route::post('cart', [
+    'as' => 'cart.add',
+    'uses' => 'ProductController@add',
+]);
+
+Route::get('destroy', [
+    'as' => 'destroy',
+    'uses' => 'ProductController@destroy',
+]);
+
+Route::get('cart', [
+    'as' => 'cart',
+    'uses' => 'ProductController@cart',
+]);
+
+Route::get('remove-cart/{rowid}', [
+    'as' => 'remove-cart',
+    'uses' => 'ProductController@remove',
+]);
+
+Route::post('cart/update/{rowId}', [
+    'as' => 'cart.update',
+    'uses' => 'ProductController@update',
+]);
+
+Route::post('/charge', 'ProductController@charge')->name('charge');

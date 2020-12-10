@@ -1,6 +1,6 @@
 @extends('frontend.master')
 @section('title','HOME')
-{{--  //@include('frontend.include.header')  --}}
+
 
 @section('content')
 <div class="banner">
@@ -14,15 +14,15 @@
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
                 <div class="carousel-caption text-center">
-                    <h3>Men’s eyewear
+                    <h3>Women’s fashion
                         <span>Cool summer sale 50% off</span>
                     </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="#shop" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
                 </div>
             </div>
             <div class="carousel-item item2">
                 <div class="carousel-caption text-center">
-                    <h3>Women’s eyewear
+                    <h3>Men’s fashion
                         <span>Want to Look Your Best?</span>
                     </h3>
                     <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
@@ -40,7 +40,7 @@
             </div>
             <div class="carousel-item item4">
                 <div class="carousel-caption text-center">
-                    <h3>Women’s eyewear
+                    <h3>Fashion gadgets
                         <span>Want to Look Your Best?</span>
                     </h3>
                     <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
@@ -63,14 +63,14 @@
         <div class="inner-sec-shop px-lg-4 px-3">
             <h3 class="tittle-w3layouts my-lg-4 my-4">New Arrivals for you </h3>
             <div class="row">
-                <!-- /womens -->
+               
                 @foreach ($products as $product)
-                <div class="col-md-3 product-men women_two">
+                <div class="col-md-3 product-men women_two" id="shop">
 
                     <div class="product-googles-info googles">
                         <div class="men-pro-item">
                             @foreach(explode(',' ,$product->image) as $image)
-                            @if ($loop->first)
+                            @if ($loop->first )
                             <div class="men-thumb-item">
                                 <img src="{{ asset('images/'.$image) }}" class="img-fluid" alt=""  lazy="loading">
                                 <div class="men-cart-pro">
@@ -144,13 +144,14 @@
                 </div>
                 @endforeach
 
+
             </div>
 
-            <!-- //womens -->
-            <!-- /mens -->
+            <div class="pagination justify-content-center">
+              <p>{{$products->links()}}</p>
+            </div>
 
-            <!--//row-->
-            <!--/meddle-->
+
             <div class="row">
                 <div class="col-md-12 middle-slider my-4">
                     <div class="middle-text-info ">

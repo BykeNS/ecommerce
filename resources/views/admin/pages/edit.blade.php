@@ -11,14 +11,6 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">General</h3>
-
-            <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                <i class="fas fa-minus"></i></button>
-            </div>
-          </div>
     <form role="form" method="post" action="{{ url('/admin/product/update/'.$product->slug) }}" enctype="multipart/form-data" data-parsley-validate="">
         @csrf
           <div class="card-body">
@@ -62,7 +54,7 @@
             </div>
           </div>
           @endforeach
-          <!-- /.card-body -->
+          {{--  <!-- /.card-body -->  --}}
         </div>
         <div class="row">
             <div class="col-12">
@@ -70,7 +62,7 @@
             </div>
           </div>
           <form>
-        <!-- /.card -->
+        {{--  <!-- /.card -->  --}}
       </div>
     </div>
   </section>

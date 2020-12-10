@@ -98,7 +98,6 @@ class AdminController extends Controller
             'image.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3548', // 3 MB,
 
         ]);
-        //$products = Product::findOrfail($product);
 
         $product->name = $request->name;
         $product->description = $request->description;
@@ -110,10 +109,9 @@ class AdminController extends Controller
 
             foreach (explode(',', $product->image) as $image) {
                 $productImage = public_path('images/' . $image);
+
                 if ($productImage) {
-
-                    unlink($productImage);
-
+                    File::delete($productImage);
                 }
             }
             foreach ($request->file('image') as $image) {

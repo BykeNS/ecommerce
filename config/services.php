@@ -12,7 +12,7 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -28,6 +28,12 @@ return [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
+
+    'stripe' => [
+        'model' => App\User::class,
+        'key' => env('pk_test_51D0pyOK4ThPYMLi4DiTMiGbstPBPhpzxu5MIIYWWQBSWHbiBc9T25B3QBmnYlWLyuOAK8Q0ahfxyOEpGybPKv1NO00dOP4jxAw'),
+        'secret' => env('sk_test_Xx2aX0lIiAaminiRrHNNdJ9I'),
     ],
 
 ];

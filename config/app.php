@@ -164,6 +164,7 @@ return [
         Brian2694\Toastr\ToastrServiceProvider::class,
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
+       
         /*
          * Package Service Providers...
          */
@@ -230,6 +231,7 @@ return [
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         'Image' => 'Intervention\Image\Facades\Image',
+
     ],
 
 ];

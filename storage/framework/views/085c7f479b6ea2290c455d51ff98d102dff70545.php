@@ -13,15 +13,15 @@
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
                 <div class="carousel-caption text-center">
-                    <h3>Men’s eyewear
+                    <h3>Women’s fashion
                         <span>Cool summer sale 50% off</span>
                     </h3>
-                    <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
+                    <a href="#shop" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
                 </div>
             </div>
             <div class="carousel-item item2">
                 <div class="carousel-caption text-center">
-                    <h3>Women’s eyewear
+                    <h3>Men’s fashion
                         <span>Want to Look Your Best?</span>
                     </h3>
                     <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
@@ -39,7 +39,7 @@
             </div>
             <div class="carousel-item item4">
                 <div class="carousel-caption text-center">
-                    <h3>Women’s eyewear
+                    <h3>Fashion gadgets
                         <span>Want to Look Your Best?</span>
                     </h3>
                     <a href="shop.html" class="btn btn-sm animated-button gibson-three mt-4">Shop Now</a>
@@ -62,14 +62,14 @@
         <div class="inner-sec-shop px-lg-4 px-3">
             <h3 class="tittle-w3layouts my-lg-4 my-4">New Arrivals for you </h3>
             <div class="row">
-                <!-- /womens -->
+               
                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="col-md-3 product-men women_two">
+                <div class="col-md-3 product-men women_two" id="shop">
 
                     <div class="product-googles-info googles">
                         <div class="men-pro-item">
                             <?php $__currentLoopData = explode(',' ,$product->image); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <?php if($loop->first): ?>
+                            <?php if($loop->first ): ?>
                             <div class="men-thumb-item">
                                 <img src="<?php echo e(asset('images/'.$image)); ?>" class="img-fluid" alt=""  lazy="loading">
                                 <div class="men-cart-pro">
@@ -143,13 +143,14 @@
                 </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
+
             </div>
 
-            <!-- //womens -->
-            <!-- /mens -->
+            <div class="pagination justify-content-center">
+              <p><?php echo e($products->links()); ?></p>
+            </div>
 
-            <!--//row-->
-            <!--/meddle-->
+
             <div class="row">
                 <div class="col-md-12 middle-slider my-4">
                     <div class="middle-text-info ">

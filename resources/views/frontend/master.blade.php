@@ -22,10 +22,10 @@
             @include('frontend.include.footer')
 
             @include('frontend.include.modal')
-            //@include('sweetalert::alert')
+           
             @include('frontend.include.scripts')
 
         </div>
     </body>
-
 </html>
+

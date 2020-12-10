@@ -20,8 +20,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('spinner-test', require('./components/SpinnerTest.vue').default);
+ //Vue.component('loading-overlay-form', require('./components/LoadingOverlayForm.vue').default);
+// Vue.component('contact-form', require('./components/ContactForm.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

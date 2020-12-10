@@ -41,6 +41,8 @@
 
 <script src="<?php echo e(asset('admin/dist/js/adminlte.min.js')); ?>"></script>
 
+<script src="<?php echo e(asset('js/app.js')); ?>"></script>
+
 </body>
 </html>
 
