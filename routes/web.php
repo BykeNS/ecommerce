@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,3 +73,15 @@ Route::post('cart/update/{rowId}', [
 ]);
 
 Route::post('/charge', 'ProductController@charge')->name('charge');
+
+Route::post('/payment', 'PayPalController@payment');
+Route::get('/payment/status',['as' => 'status', 'uses' => 'PayPalController@getPaymentStatus']);
+
+Route::get('/thanks','ProductController@thanks');
+
+
+
+Route::post('/create-payment', 'PayPalController@create-payment');
+Route::post('/execute-payment', 'PayPalController@execute-payment');
+
+

@@ -1,5 +1,6 @@
 <script src="{{ asset('frontend/js/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>
+ // Required. Replace SB_CLIENT_ID with your sandbox client ID.</script>
 <script>
     function toasterOptions() {
         toastr.options = {
@@ -189,9 +190,8 @@
     });
 </script>
 <script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
-
-{{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script>
+{{--  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>  --}}
+    {{--  <script>
      const Toast = Swal.mixin({
          toast: true,
          position: 'top-end',
@@ -203,5 +203,6 @@
          type: 'success',
          title: 'Signed in successfully'
          })
-    </script> --}}
+    </script>   --}}
+    
 

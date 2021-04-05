@@ -1,7 +1,9 @@
 <?php $__env->startSection('content'); ?>
-<div class="">
+<div id="">
+   
     <div class="card-body login-card-body">
       <p class="login-box-msg"><b>Log in</b> to start your session</p>
+    
       <?php echo $__env->make('messages.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
       <form method="POST" action="<?php echo e(route('login')); ?>">
         <?php echo csrf_field(); ?>
@@ -94,8 +96,10 @@ unset($__errorArgs, $__bag); ?>
       <?php endif; ?>
     </form>
     </div>
+    
 
   </div>
+  
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('admin.include.scripts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>

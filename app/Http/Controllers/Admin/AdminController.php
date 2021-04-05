@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Http\Controllers\Controller;
-use App\Product;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
 use Image;
+use App\User;
+use App\Product;
+use App\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
 use Symfony\Component\HttpKernel\HttpCache\Store;
 
 class AdminController extends Controller
@@ -22,7 +24,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        $categories = Category::all();
+        $categories = Category::orderBy('id','DESC');
         $products = Product::allProduct();
 
         return view('admin.pages.index', compact('products', 'users', 'categories'));

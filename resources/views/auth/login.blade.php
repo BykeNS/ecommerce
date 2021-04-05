@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="">
+<div id="">
+   
     <div class="card-body login-card-body">
       <p class="login-box-msg"><b>Log in</b> to start your session</p>
+    
       @include('messages.message')
       <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -66,8 +68,10 @@
       @endif
     </form>
     </div>
+    
 
   </div>
+  
 @endsection
 
 @include('admin.include.scripts')

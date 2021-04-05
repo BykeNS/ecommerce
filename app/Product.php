@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
 
+    protected $paginate = 12;
     protected $fillable = ['name', 'price', 'description', 'image', 'slug', 'category'];
+
 
     public function category()
     {
@@ -21,7 +23,7 @@ class Product extends Model
 
     public function scopeAllProduct($query)
     {
-        return $query->orderBy('created_at', 'desc')->paginate(12);
+        return $query->with('category')->paginate($this->paginate);
     }
     // public function scopeSearch($query)
     // {
@@ -33,4 +35,5 @@ class Product extends Model
         return number_format($this->price, 2);
     }
 
+    
 }

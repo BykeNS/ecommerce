@@ -19,9 +19,10 @@
         timer:6900,
         type:'success'
     })
-    window.setTimeout(function(){
-        location.reload();
-    } ,2700);
+    setTimeout(function () { 
+      location.reload();
+    }, 2600);
+    
 
 </script>
 <?php endif; ?>

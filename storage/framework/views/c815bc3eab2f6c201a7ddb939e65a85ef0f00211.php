@@ -10,7 +10,7 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="utf-8">
-
+    <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <link href="<?php echo e(asset('frontend/css/bootstrap.css')); ?>" rel='stylesheet' type='text/css' />
 	<link href="<?php echo e(asset('frontend/css/simplyCountdown.css')); ?>" rel='stylesheet' type='text/css' />
 	<link href="<?php echo e(asset('frontend/css/login_overlay.css')); ?>" rel='stylesheet' type='text/css' />
@@ -29,7 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo e(asset('frontend/css/jquery-ui1.css')); ?>">
     <link href="<?php echo e(asset('frontend/css/easy-responsive-tabs.css')); ?>" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     
 
 

@@ -1,5 +1,6 @@
 <script src="<?php echo e(asset('frontend/js/jquery-2.2.3.min.js')); ?>"></script>
 <script src="<?php echo e(asset('admin/plugins/toastr/toastr.min.js')); ?>"></script>
+ // Required. Replace SB_CLIENT_ID with your sandbox client ID.</script>
 <script>
     function toasterOptions() {
         toastr.options = {
@@ -180,6 +181,7 @@
 </script>
 <script src="<?php echo e(asset('frontend/js/bootstrap.js')); ?>"></script>
 
-
+    
+    
 
 <?php /**PATH C:\laragon\www\ecom\resources\views/frontend/include/scripts.blade.php ENDPATH**/ ?>

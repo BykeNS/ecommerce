@@ -32,7 +32,8 @@ class ProductController extends Controller
     {
     
         $products = Product::allProduct();
-        // $products->chunk(5);
+        //$products = Product::with('category')->paginate(12);
+        //$products = DB::table('products')->paginate(12);
         return view('frontend.pages.index', compact('products'));
     }
 
@@ -98,6 +99,7 @@ class ProductController extends Controller
 
     public function add(Request $request)
     {
+        
         Cart::add([
             'id' => $request->id,
             'name' => $request->name,
@@ -113,6 +115,8 @@ class ProductController extends Controller
 
     public function update(Request $request, $rowId)
     {
+        Cart::setDiscount($rowId,10);
+        
         Cart::update($rowId, $request->qty);
         return redirect()->back()->with('success', 'Item ' . $request->name . ' was updated to your cart!');
     }
@@ -139,7 +143,7 @@ class ProductController extends Controller
     {
         return view('frontend.pages.cart');
     }
-
+// Stripe  integration
     public function charge(Request $request)
     {
         $total = floatval(str_replace(',', '', Cart::total()) * 100);
@@ -149,24 +153,37 @@ class ProductController extends Controller
             Stripe::setApiKey('sk_test_Xx2aX0lIiAaminiRrHNNdJ9I');
 
             $customer = Customer::create(array(
-                'email' => $request->stripeEmail,
+                'email' => $request->email,
+                'name' => $request->name,
+                'phone' => $request->phone,
                 'source' => $request->stripeToken,
             ));
 
             $charge = Charge::create(array(
+                'description' => 'Transaction',
                 'customer' => $customer->id,
                 'amount' => $total,
                 'currency' => 'eur',
+                'receipt_email' => $request->email,
+                 
             ));
+            
+            Cart::destroy();
+             
 
-            Mail::to($customer['email'])->send(new CustomerMail($cart));
-            Mail::to(env('MAIL_USERNAME'))->send(new NewMail);
+           Mail::to($customer['email'])->send(new CustomerMail($cart));
+           Mail::to(env('MAIL_USERNAME'))->send(new Newmail);
 
-            return redirect()->back()->with('success', 'Thank You! Your payment was successful');
+            return redirect('/thanks')->with('success', 'Thank You! Your payment was successful');
 
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
 
+    }
+
+    public function thanks()
+    {
+        return view('frontend.pages.thanks');
     }
 }
